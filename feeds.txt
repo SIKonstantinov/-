@@ -1,0 +1,8 @@
+# RSS-ленты для дайджеста: одна ссылка на строку.
+# Можно указать своё название через "|":  Название | https://example.com/rss
+# Строки, начинающиеся с #, игнорируются.
+
+ForkLog | https://forklog.com/feed
+Bits.media | https://bits.media/rss2/
+Cointelegraph RU | https://ru.cointelegraph.com/rss
+CoinDesk | https://www.coindesk.com/arc/outboundfeeds/rss/

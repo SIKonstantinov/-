@@ -1,0 +1,24 @@
+name: Crypto digest
+
+on:
+  schedule:
+    # Время в UTC. 05:50 UTC = 08:50 МСК: GitHub часто запускает cron с задержкой,
+    # поэтому стартуем чуть раньше, чтобы дайджест пришёл около 9 утра.
+    - cron: "50 5 * * *"
+  workflow_dispatch: # кнопка «Run workflow» для ручного запуска
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python -m bot
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
